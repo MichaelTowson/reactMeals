@@ -1,4 +1,6 @@
-import classes from './AvailableMeals.module.css'
+import Card from "../UI/Card";
+import MealItem from "./MealItem/MealItem";
+import classes from "./AvailableMeals.module.css";
 
 //Temporary meals data before connecting to a database in final product.
 const DUMMY_MEALS = [
@@ -30,15 +32,22 @@ const DUMMY_MEALS = [
 
 //Component code
 const AvailableMeals = () => {
-  const mealsList = DUMMY_MEALS.map(item => <li>{item.name}</li>)
+  const mealsList = DUMMY_MEALS.map((item) => (
+    <MealItem
+      key={item.id}
+      name={item.name}
+      description={item.description}
+      price={item.price}
+    />
+  ));
 
-  return ( <section className={classes.meals}>
-    <ul>
-      {mealsList}
-    </ul>
-  </section>
-
-  )
+  return (
+    <section className={classes.meals}>
+      <ul>
+        <Card>{mealsList}</Card>
+      </ul>
+    </section>
+  );
 };
 
 export default AvailableMeals;
