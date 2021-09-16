@@ -1,3 +1,5 @@
+
+
 import CartContext from './cart-context';
 
 //NOTE: Because app.js is going to be using this context, all of this logic could have also been put in there. However, by putting this into a wrapper component, we keep the file lean.
