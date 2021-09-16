@@ -17,6 +17,8 @@ cart-items {
 
 .actions {
   text-align: right;
+  display: flex;
+  justify-content: right;
 }
 
 .actions button {
