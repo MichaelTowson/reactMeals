@@ -12,7 +12,8 @@ const defaultCartState = {
 const cartReducer = (state, action) => {
   if (action.type === 'ADD') {
     
-    //concat returns a new array. We don't want to edit previous state reference
+    //concat returns a new array. We don't want to edit previous state reference.
+    //The reducer state is initialized below in the main CartProvider function.
     const updatedItems = state.items.concat(action.item);
     const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount;
     return {
@@ -26,15 +27,16 @@ const cartReducer = (state, action) => {
 
 
 const CartProvider = props => {
+  
   //Initialize reducer
   const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState);
 
-  const addItemToCartHandler = item => {
-    dispatchCartAction({type: 'ADD', item: item});
+  const addItemToCartHandler = submissiondata => {
+    dispatchCartAction({type: 'ADD', item: submissiondata});
   };
 
-  const removeItemFromCartHandler = item => {
-    dispatchCartAction({type: 'REMOVE', id: item.id});
+  const removeItemFromCartHandler = submissiondata => {
+    dispatchCartAction({type: 'REMOVE', id: submissiondata.id});
   };
 
   const cartContext = {

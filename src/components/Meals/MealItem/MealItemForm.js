@@ -10,7 +10,7 @@ const MealItemForm = (props) => {
 
   const submitHandler = event => {
     event.preventDefault();
-    const enteredAmount = amountInputRef.current.value;
+    const enteredAmount = amountInputRef.current.value; //current must always be used with ref
     const enteredAmountNumber = +enteredAmount; //converts string number to number
 
     if (enteredAmount.trim().length === 0 || enteredAmount < 1 || enteredAmountNumber > 5) {
